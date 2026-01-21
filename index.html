@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoSort - Login</title>
     <style>
-        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0fdf4; margin: 0; }
-        .container { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; }
-        h2 { color: #166534; }
-        input { width: 90%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-        button { width: 90%; padding: 12px; background-color: #166534; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
-        .link { margin-top: 15px; font-size: 14px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0fdf4; margin: 0; }
+        .container { background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; }
+        h2 { color: #166534; margin-bottom: 1.5rem; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background-color: #166534; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; margin-top: 10px; }
+        button:hover { background-color: #14532d; }
+        .footer-link { margin-top: 20px; font-size: 14px; color: #666; }
         a { color: #166534; text-decoration: none; font-weight: bold; }
     </style>
 </head>
@@ -18,27 +19,27 @@
 
 <div class="container">
     <h2>EcoSort Login</h2>
-    <input type="text" id="loginUser" placeholder="Username">
-    <input type="password" id="loginPass" placeholder="Kata Laluan">
-    <button onclick="login()">Log Masuk</button>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="handleLogin()">Login</button>
     
-    <div class="link">
-        Belum ada akaun? <a href="register.html">Sign Up</a>
+    <div class="footer-link">
+        Don't have an account? <a href="register.html">Sign Up</a>
     </div>
 </div>
 
 <script>
-    function login() {
-        const usernameInput = document.getElementById('loginUser').value;
-        const passInput = document.getElementById('loginPass').value;
+    function handleLogin() {
+        const userInp = document.getElementById('username').value;
+        const passInp = document.getElementById('password').value;
         
-        // Ambil data user yang dah register tadi
+        // Get data from localStorage
         const storedUser = JSON.parse(localStorage.getItem('ecoSortUser'));
 
-        if (storedUser && usernameInput === storedUser.username && passInput === storedUser.pass) {
+        if (storedUser && userInp === storedUser.username && passInp === storedUser.password) {
             window.location.href = "dashboard.html";
         } else {
-            alert("Username atau kata laluan tidak sah!");
+            alert("Invalid username or password! Please register if you haven't.");
         }
     }
 </script>
