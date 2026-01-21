@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSort - Sign Up</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0fdf4; margin: 0; }
+        .container { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; }
+        h2 { color: #166534; margin-bottom: 20px; }
+        input { width: 90%; padding: 12px; margin: 8px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { width: 90%; padding: 12px; background-color: #166534; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        button:hover { background-color: #14532d; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Daftar Akaun</h2>
+    <input type="text" id="regUser" placeholder="Username">
+    
+    <input type="text" id="regFullName" placeholder="Nama Penuh" oninput="this.value = this.value.toUpperCase()">
+    
+    <input type="tel" id="regPhone" placeholder="No Telefon">
+    
+    <input type="password" id="regPass" placeholder="Kata Laluan">
+    
+    <button onclick="register()">Daftar</button>
+</div>
+
+<script>
+    function register() {
+        const username = document.getElementById('regUser').value;
+        const fullName = document.getElementById('regFullName').value;
+        const phone = document.getElementById('regPhone').value;
+        const pass = document.getElementById('regPass').value;
+
+        if(username && fullName && phone && pass) {
+            // Simpan semua data ke dalam object
+            const user = { 
+                username: username, 
+                fullName: fullName, 
+                phone: phone, 
+                pass: pass 
+            };
+            
+            // Simpan dalam localStorage
+            localStorage.setItem('ecoSortUser', JSON.stringify(user));
+            
+            alert("Pendaftaran berjaya, " + fullName + "! Sila log masuk.");
+            window.location.href = "login.html";
+        } else {
+            alert("Sila isi semua ruangan yang disediakan.");
+        }
+    }
+</script>
+
+</body>
+</html>

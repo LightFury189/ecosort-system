@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSort - Login</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0fdf4; margin: 0; }
+        .container { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; }
+        h2 { color: #166534; }
+        input { width: 90%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { width: 90%; padding: 12px; background-color: #166534; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        .link { margin-top: 15px; font-size: 14px; }
+        a { color: #166534; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>EcoSort Login</h2>
+    <input type="text" id="loginUser" placeholder="Username">
+    <input type="password" id="loginPass" placeholder="Kata Laluan">
+    <button onclick="login()">Log Masuk</button>
+    
+    <div class="link">
+        Belum ada akaun? <a href="register.html">Sign Up</a>
+    </div>
+</div>
+
+<script>
+    function login() {
+        const usernameInput = document.getElementById('loginUser').value;
+        const passInput = document.getElementById('loginPass').value;
+        
+        // Ambil data user yang dah register tadi
+        const storedUser = JSON.parse(localStorage.getItem('ecoSortUser'));
+
+        if (storedUser && usernameInput === storedUser.username && passInput === storedUser.pass) {
+            window.location.href = "dashboard.html";
+        } else {
+            alert("Username atau kata laluan tidak sah!");
+        }
+    }
+</script>
+
+</body>
+</html>
